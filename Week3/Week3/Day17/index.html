@@ -1,1 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hijab Collection | Premium Silk Hijab</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Modern serif + sans-serif -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+   <!-- Link to external CSS (or embed below) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="product-wrapper">
+            <!-- LEFT: IMAGE GALLERY -->
+            <div class="gallery">
+                <div class="main-image">
+                    <img id="mainProductImage" src="C:\Users\Ch AbdulRehman Bajwa\Desktop\Week3\Day17\image4.png" alt="Premium Silk Hijab">
+                </div>
+                <div class="thumbnail-list">
+                    <div class="thumbnail active" onclick="changeImage(this, 'C:\Users\Ch AbdulRehman Bajwa\Desktop\Week3\Day17\image2.png')">
+                        <img src="C:\Users\Ch AbdulRehman Bajwa\Desktop\Week3\Day17\image2.png" alt="Thumb 1">
+                    </div>
+                    <div class="thumbnail" onclick="changeImage(this, 'C:\Users\Ch AbdulRehman Bajwa\Desktop\Week3\Day17\image1.png')">
+                        <img src="C:\Users\Ch AbdulRehman Bajwa\Desktop\Week3\Day17\image1.png" alt="Thumb 2">
+                    </div>
+                    <div class="thumbnail" onclick="changeImage(this, 'C:\Users\Ch AbdulRehman Bajwa\Desktop\Week3\Day17\image5.png')">
+                        <img src="C:\Users\Ch AbdulRehman Bajwa\Desktop\Week3\Day17\image5.png" alt="Thumb 3">
+                    </div>
+                    <div class="thumbnail" onclick="changeImage(this, 'C:\Users\Ch AbdulRehman Bajwa\Desktop\Week3\Day17\image3.png')">
+                        <img src="C:\Users\Ch AbdulRehman Bajwa\Desktop\Week3\Day17\image3.png" alt="Thumb 4">
+                    </div>
+                </div>
+            </div>
 
+            <!-- RIGHT: PRODUCT DETAILS -->
+            <div class="product-details">
+                <div class="product-category">Hijab Collection</div>
+                <h1 class="product-title">Premium Silk Chiffon Hijab</h1>
+                
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    <span>(128 reviews)</span>
+                </div>
+
+                <div class="price">
+                    $39.99 <small>$59.99</small>
+                </div>
+
+                <p class="description">
+                    Luxurious silk‑chiffon hijab, ultra‑soft and breathable. Perfect for all seasons. 
+                    Features anti‑slip under layer and wrinkle‑resistant fabric. Available in multiple colors.
+                </p>
+
+                <!-- Color Selection -->
+                <div class="color-section">
+                    <span class="section-label">Color: <span id="selectedColor">Beige</span></span>
+                    <div class="color-options">
+                        <div class="color-circle beige active" onclick="selectColor(this, 'Beige')"></div>
+                        <div class="color-circle black" onclick="selectColor(this, 'Black')"></div>
+                        <div class="color-circle navy" onclick="selectColor(this, 'Navy')"></div>
+                        <div class="color-circle mauve" onclick="selectColor(this, 'Mauve')"></div>
+                    </div>
+                </div>
+
+                <!-- Size / Length -->
+                <div class="size-section">
+                    <span class="section-label">Length</span>
+                    <div class="size-options">
+                        <div class="size-btn active" onclick="selectSize(this, 'Regular (70cm)')">Regular</div>
+                        <div class="size-btn" onclick="selectSize(this, 'Long (85cm)')">Long</div>
+                        <div class="size-btn" onclick="selectSize(this, 'Extra Long (100cm)')">Extra Long</div>
+                    </div>
+                </div>
+
+                <!-- Quantity and Buttons -->
+                <div class="quantity-section">
+                    <div class="quantity-selector">
+                        <button class="quantity-btn" onclick="decrementQuantity()">−</button>
+                        <input type="text" id="quantity" value="1" readonly>
+                        <button class="quantity-btn" onclick="incrementQuantity()">+</button>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="addToCart()"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                    <button class="btn btn-secondary" onclick="buyNow()"><i class="fas fa-bolt"></i> Buy Now</button>
+                </div>
+
+                <!-- Extra info (free shipping etc) -->
+                <p style="color: #7a6b5c; font-size: 0.9rem;"><i class="fas fa-truck"></i> Free shipping on orders over $50</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========== PRODUCT PAGE INTERACTIVITY ==========
+        // All buttons are clickable and provide feedback
+
+        // ---- Image Gallery ----
+        function changeImage(thumbnail, src) {
+            // Update main image
+            document.getElementById('mainProductImage').src = src;
+            // Remove active class from all thumbnails
+            document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
+            // Add active to clicked thumbnail
+            thumbnail.classList.add('active');
+        }
+
+        // ---- Color Selection ----
+        function selectColor(element, colorName) {
+            // Remove active from all colors
+            document.querySelectorAll('.color-circle').forEach(c => c.classList.remove('active'));
+            // Add active to selected
+            element.classList.add('active');
+            // Update text
+            document.getElementById('selectedColor').textContent = colorName;
+            // Optional: show small feedback
+            showToast(`Color selected: ${colorName}`);
+        }
+
+        // ---- Size Selection ----
+        function selectSize(element, sizeName) {
+            document.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+            showToast(`Size selected: ${sizeName}`);
+        }
+
+        // ---- Quantity ----
+        function incrementQuantity() {
+            let qty = document.getElementById('quantity');
+            qty.value = parseInt(qty.value) + 1;
+        }
+
+        function decrementQuantity() {
+            let qty = document.getElementById('quantity');
+            if (parseInt(qty.value) > 1) {
+                qty.value = parseInt(qty.value) - 1;
+            }
+        }
+
+        // ---- Cart Actions ----
+        function addToCart() {
+            const qty = document.getElementById('quantity').value;
+            const color = document.getElementById('selectedColor').textContent;
+            const size = document.querySelector('.size-btn.active').textContent;
+            showToast(`✅ Added ${qty} x Premium Silk Hijab (${color}, ${size}) to cart`);
+        }
+
+        function buyNow() {
+            const qty = document.getElementById('quantity').value;
+            const color = document.getElementById('selectedColor').textContent;
+            const size = document.querySelector('.size-btn.active').textContent;
+            showToast(`⚡ Proceeding to buy ${qty} item(s) - ${color}, ${size}`);
+        }
+
+        // ---- Simple Toast Notification (instead of alert) ----
+        function showToast(message) {
+            // Create a small floating toast if not exists
+            let toast = document.getElementById('toastMessage');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'toastMessage';
+                toast.style.position = 'fixed';
+                toast.style.bottom = '20px';
+                toast.style.left = '50%';
+                toast.style.transform = 'translateX(-50%)';
+                toast.style.backgroundColor = '#5f4b3a';
+                toast.style.color = 'white';
+                toast.style.padding = '12px 24px';
+                toast.style.borderRadius = '50px';
+                toast.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
+                toast.style.zIndex = '1000';
+                toast.style.fontWeight = '500';
+                toast.style.transition = 'opacity 0.3s';
+                toast.style.opacity = '0';
+                document.body.appendChild(toast);
+            }
+            toast.textContent = message;
+            toast.style.opacity = '1';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+            }, 2000);
+        }
+
+        // Ensure all buttons are clickable and show feedback
+        // (already done via onclick handlers)
+    </script>
+</body>
+</html>
