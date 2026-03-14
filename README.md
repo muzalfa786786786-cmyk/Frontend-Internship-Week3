@@ -9,8 +9,8 @@ The website provides a clean and elegant shopping interface where users can expl
 
 ## 🔗 Live Demo
 
-View Live Site on Day 21 folder 
-i upload output viedo file
+View Live Site on netlify.app 
+[i upload output viedo file](https://agent-69b563385--ubiquitous-dieffenbachia-97bab3.netlify.app)
 
 ## ✨ Features
 
@@ -35,7 +35,7 @@ i upload output viedo file
 ## 📁 Project Structure
 
 Fashion-Ecommerce-Website
-
+```
 │
 ├── index.html        (Home Page)  
 ├── about.html        (About Page)  
@@ -51,7 +51,7 @@ Fashion-Ecommerce-Website
 │
 └── images  
     └── product images
-
+```
 ## 🎯 Internship Information
 
 Internship: Frontend Development Internship  
