@@ -9,7 +9,7 @@ The website provides a clean and elegant shopping interface where users can expl
 
 ## 🔗 Live Demo
 
-View Live Site on netlify.app 
+View Live Site on folder 
 [i upload output viedo file on day22]
 
 ## ✨ Features
