@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion E‑commerce • Contact</title>
+  <!-- Modern, clean font – Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f5f5f7;  /* soft, light neutral – subtle elegance */
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .contact-card {
+      max-width: 680px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.08), 0 8px 18px -6px rgba(0, 0, 0, 0.02);
+      padding: 2.5rem 2.2rem;
+      transition: all 0.2s ease;
+    }
+
+    /* fashion touch: subtle accent line */
+    .contact-card h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.2rem;
+      color: #121212;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .contact-card h2::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, #c7a17a 0%, #e3d2c0 80%);
+      border-radius: 2px;
+      max-width: 140px;
+    }
+
+    .subhead {
+      font-size: 0.95rem;
+      color: #5c5c5c;
+      margin-bottom: 2rem;
+      border-left: 3px solid #c7a17a;
+      padding-left: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.4rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #2e2e2e;
+      margin-bottom: 0.3rem;
+    }
+
+    label::after {
+      content: ' *';
+      color: #b15c5c;
+      font-weight: 500;
+    }
+
+    /* all inputs share same style */
+    input, textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      background-color: #fafafc;
+      border: 1.5px solid #e2e2e6;
+      border-radius: 16px;
+      transition: border 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #c7a17a;
+      box-shadow: 0 0 0 4px rgba(199, 161, 122, 0.12);
+      background-color: #ffffff;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    /* error message styling – reserve space to avoid layout shift */
+    .error {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #cf3e3e;
+      min-height: 1.6rem;
+      padding: 0.25rem 0 0 0.5rem;
+      margin: 0;
+      line-height: 1.3;
+      transition: 0.1s;
+    }
+
+    /* success message – hidden by default */
+    .success-message {
+      background: #eef7ec;
+      border: 1px solid #b8d9b2;
+      color: #1e6f2c;
+      padding: 1rem 1.2rem;
+      border-radius: 20px;
+      font-weight: 500;
+      margin-top: 1.8rem;
+      display: none;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+    }
+
+    .success-message::before {
+      content: "✓";
+      display: inline-block;
+      background: #1e6f2c;
+      color: white;
+      width: 1.4rem;
+      height: 1.4rem;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 1.4rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .submit-btn {
+      background: #121212;
+      color: white;
+      font-weight: 600;
+      font-size: 1.05rem;
+      padding: 1rem 1.8rem;
+      border: none;
+      border-radius: 40px;
+      width: 100%;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      letter-spacing: 0.3px;
+      margin-top: 0.5rem;
+      box-shadow: 0 8px 20px -10px rgba(0,0,0,0.2);
+    }
+
+    .submit-btn:hover {
+      background: #2d2d2d;
+    }
+
+    .submit-btn:active {
+      transform: scale(0.99);
+    }
+
+    /* remove default number spinners – phone field */
+    input[type="tel"]::-webkit-outer-spin-button,
+    input[type="tel"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type="tel"] {
+      -moz-appearance: textfield;
+    }
+
+    /* responsive adjustments */
+    @media (max-width: 480px) {
+      .contact-card {
+        padding: 1.8rem 1.4rem;
+      }
+      .contact-card h2 {
+        font-size: 1.7rem;
+      }
+      .contact-card h2::after {
+        max-width: 80px;
+      }
+      input, textarea {
+        padding: 0.8rem 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="contact-card">
+    <h2>Let’s connect</h2>
+    <div class="subhead">We’ll get back to you within 24h</div>
+
+    <form id="contactForm" novalidate>
+      <!-- NAME -->
+      <div class="form-group">
+        <label for="name">Full name</label>
+        <input type="text" id="name" name="name" placeholder="Alex Morgan" autocomplete="off">
+        <div class="error" id="nameError"></div>
+      </div>
+
+      <!-- EMAIL -->
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" id="email" name="email" placeholder="hello@style.com" autocomplete="off">
+        <div class="error" id="emailError"></div>
+      </div>
+
+      <!-- PHONE (required) -->
+      <div class="form-group">
+        <label for="phone">Phone number</label>
+        <input type="tel" id="phone" name="phone" placeholder="+1 234 567 890" autocomplete="off">
+        <div class="error" id="phoneError"></div>
+      </div>
+
+      <!-- MESSAGE -->
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Tell us about your style inquiry..."></textarea>
+        <div class="error" id="messageError"></div>
+      </div>
+
+      <button type="submit" class="submit-btn">Send message</button>
+
+      <!-- success message (hidden initially) -->
+      <div class="success-message" id="successMessage">
+        Your message has been sent successfully. Our team will reply shortly.
+      </div>
+    </form>
+  </div>
+
+  <script>
+    (function() {
+      // ----- get DOM elements -----
+      const form = document.getElementById('contactForm');
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const phoneInput = document.getElementById('phone');
+      const messageInput = document.getElementById('message');
+
+      const nameError = document.getElementById('nameError');
+      const emailError = document.getElementById('emailError');
+      const phoneError = document.getElementById('phoneError');
+      const messageError = document.getElementById('messageError');
+      const successDiv = document.getElementById('successMessage');
+
+      // helper to hide success and clear a specific error
+      function clearFieldError(errorElement) {
+        errorElement.textContent = '';
+      }
+
+      // ----- real-time error clearing while typing (UX polish) -----
+      nameInput.addEventListener('input', () => clearFieldError(nameError));
+      emailInput.addEventListener('input', () => clearFieldError(emailError));
+      phoneInput.addEventListener('input', () => clearFieldError(phoneError));
+      messageInput.addEventListener('input', () => clearFieldError(messageError));
+
+      // also clear errors on focus (optional but friendly)
+      [nameInput, emailInput, phoneInput, messageInput].forEach(input => {
+        input.addEventListener('focus', () => {
+          // clear the corresponding error
+          if (input === nameInput) clearFieldError(nameError);
+          if (input === emailInput) clearFieldError(emailError);
+          if (input === phoneInput) clearFieldError(phoneError);
+          if (input === messageInput) clearFieldError(messageError);
+          // hide success when user starts editing again
+          successDiv.style.display = 'none';
+        });
+      });
+
+      // ----- email validation regex (standard) -----
+      function isValidEmail(email) {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;  // basic but solid
+        return emailPattern.test(email);
+      }
+
+      // ----- form submit handler -----
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();   // no actual post
+
+        // 1. hide any previous success message
+        successDiv.style.display = 'none';
+
+        // 2. trim all values
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const phone = phoneInput.value.trim();
+        const message = messageInput.value.trim();
+
+        // 3. reset all error messages
+        nameError.textContent = '';
+        emailError.textContent = '';
+        phoneError.textContent = '';
+        messageError.textContent = '';
+
+        // 4. validation flag
+        let isValid = true;
+
+        // ---- Name validation ----
+        if (name === '') {
+          nameError.textContent = 'Please enter your full name.';
+          isValid = false;
+        }
+
+        // ---- Email validation ----
+        if (email === '') {
+          emailError.textContent = 'Email address is required.';
+          isValid = false;
+        } else if (!isValidEmail(email)) {
+          emailError.textContent = 'Enter a valid email address (e.g., name@domain.com).';
+          isValid = false;
+        }
+
+        // ---- Phone validation ----
+        if (phone === '') {
+          phoneError.textContent = 'Phone number is required.';
+          isValid = false;
+        }
+        // (optional: we could add a basic phone pattern, but spec only requires "required")
+
+        // ---- Message validation ----
+        if (message === '') {
+          messageError.textContent = 'Please write your message.';
+          isValid = false;
+        }
+
+        // 5. if everything is valid → show success, clear form, hide errors
+        if (isValid) {
+          // display success message
+          successDiv.style.display = 'flex';   // using flex for layout
+
+          // (optional) reset form fields after success
+          form.reset();
+
+          // also clear any residual error messages (safe)
+          nameError.textContent = '';
+          emailError.textContent = '';
+          phoneError.textContent = '';
+          messageError.textContent = '';
+
+          // optional: scroll success into view lightly
+          successDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          // if invalid, ensure success stays hidden
+          successDiv.style.display = 'none';
+        }
+      });
+
+      // extra touch: if user clicks success, it can stay; we hide on new input (already done above)
+    })();
+  </script>
+</body>
+</html>
